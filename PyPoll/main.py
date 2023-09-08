@@ -5,10 +5,10 @@ import os
 import csv
 
 # Specify the file we will be using
-csvpath = os.path.join('..', 'PyPoll', 'Resources', 'election_data.csv')
-print(f'csvpath: {csvpath}')
+election_data_csv = os.path.join('..', 'PyPoll', 'Resources', 'election_data.csv')
+print(f'election_data_csv: {election_data_csv}')
 
-with open(csvpath) as csvfile:
+with open(election_data_csv) as csvfile:
 #   CSV reader specifies delimiter   
     csvreader = csv.reader(csvfile, delimiter=',')
     print(csvreader)
