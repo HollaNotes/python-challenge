@@ -9,6 +9,8 @@ budget_data_csv = os.path.join('..', 'PyBank', 'Resources', 'budget_data.csv')
 print(f'budget_data_csv: {budget_data_csv}')
 
 # Define funtions
+ 
+
 
 # Set Variables
 #budget_data_dict = {}
@@ -19,7 +21,7 @@ pl_total_net = 0
 
 
 
-with open(budget_data_csv) as csvfile:
+with open(budget_data_csv, 'r') as csvfile:
 #   CSV reader specifies delimiter     
     csvreader = csv.reader(csvfile, delimiter=',')
     print(csvreader)
@@ -46,7 +48,10 @@ with open(budget_data_csv) as csvfile:
 #   
 # 2 ------NET TOTAL AMOUNT OF PROFIT/LOSS OVER ENTIRE PERIOD-------------------------
     # Need to get sum of entire column as it goes through the rows   
-    
+   
+        
+        
+
     
 
 # 2 ---------------------------------------------------------------------------------
