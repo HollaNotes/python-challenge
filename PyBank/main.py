@@ -1,84 +1,53 @@
-# This will allow us to create file path across OS
 import os
-
-# Module for reading CSV files
 import csv
 
-# Specify the file we will be using
-budget_data_csv = os.path.join('..', 'PyBank', 'Resources', 'budget_data.csv')
-print(f'budget_data_csv: {budget_data_csv}')
 
-# Define funtions
- 
-
+BUDGET_DATA_PATH = os.path.join('Resources', 'budget_data.csv')
+DATE_INDEX = 0
+PROFIT_INDEX = 1
 
 # Set Variables
-#budget_data_dict = {}
-dates = []
-profit_loss = []
 total_months = 0
-pl_total_net = 0
+total_profit = 0
+prev_profit = None
+total_change = 0
 
-
-
-with open(budget_data_csv, 'r') as csvfile:
-#   CSV reader specifies delimiter     
-    csvreader = csv.reader(csvfile, delimiter=',')
-    print(csvreader)
-    #budget_data_dict = {rows[0]:rows[1] for rows in csvreader}
-    
-    #   Read the header row first
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
+with open(BUDGET_DATA_PATH) as csvfile:
+    csvreader = csv.reader(csvfile)
+    #   Skip header row 
     csv_header = next(csvreader)
-    #print(f"CSV Header: {csv_header}")
-    
-
-#------PRINT CSV ROWS----------------------------------------------------------------
-#   Read each row of data after the header    
-    #for row in csvreader:
-        #print(row)    
-#------------------------------------------------------------------------------------ 
-#        
-# 1 ------TOTAL MONTHS IN DATASET----------------------------------------------------
-    # Count begins at zero and needs to increase by 1 as it counts the rows
       
     for row in csvreader:
+        # Inputs
+        current_date = row[0]
+        current_profit = int(row[1])
+        # Calculate total months     
         total_months += 1
-    
-# 1 ---------------------------------------------------------------------------------  
-#   
-# 2 ------NET TOTAL AMOUNT OF PROFIT/LOSS OVER ENTIRE PERIOD-------------------------
-    # Need to get sum of entire column as it goes through the rows   
-   
-        
-        
+        # Calculate total profit
+        total_profit += current_profit
+        # Changes         
+        if prev_profit is not None:         
+            current_change = current_profit - prev_profit  
+            total_change += current_change 
+        prev_profit = current_profit     # prepare for next row 
 
-    
+average_change = total_change/(total_months-1)
 
-# 2 ---------------------------------------------------------------------------------
+output_text = ( 
+    " \n"
+    "Financial Analysis\n"
+    "-----------------------------------------\n"
+)
 
-# 3 ------CHANGES IN PROFIT/LOSS OVER ENTIRE PERIOD, AND AVERAGE OF CHANGES----------
+# print(f"Total Months: {total_months}")
+# print(f"Total: ${total_profit}")
+# print(f"Average Change: ${average_change}")
+# print(f"Greatest Increase in Profits:   ") 
+# print(f"Greatest Decrease in Profits:   ")
 
+# # 6 ---------------------------------------------------------------------------------
+with open('TEMPOUT', 'w') as out_file:
+    out_file.write(output_text) 
 
-# 3 ---------------------------------------------------------------------------------
-
-# 4 ------GREATEST INCREASE IN PROFITS (DATE AND AMOUNT) OVER ENTIRE PERIOD----------
-
-
-# 4 ---------------------------------------------------------------------------------
-
-# 5 ------GREATEST DECREASE IN PROFITS (DATE AND AMOUNT) OVER ENTIRE PERIOD----------
-
-
-# 5 ---------------------------------------------------------------------------------
-
-# 6 ------PRINT ALL------------------------------------------------------------------
-print(" ")
-print(f"Financial Analysis")
-print(f"-----------------------------------------")
-print(f"Total Months: {total_months}")
-print(f"Total: $  ")
-print(f"Average Change: $  ")
-print(f"Greatest Increase in Profits:   ")
-print(f"Greatest Decrease in Profits:   ")
-
-# 6 ---------------------------------------------------------------------------------
+print(output_text)    
