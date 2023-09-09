@@ -1,84 +1,49 @@
-# This will allow us to create file path across OS
 import os
-
-# Module for reading CSV files
 import csv
 
-# Specify the file we will be using
-election_data_csv = os.path.join('..', 'PyPoll', 'Resources', 'election_data.csv')
-print(f'election_data_csv: {election_data_csv}')
-
-
+ELECTION_DATA_PATH = os.path.join('Resources', 'election_data.csv')
+BALLOT_ID_INDEX = 0
+COUNTY_INDEX = 1
+CANDIDATE_INDEX = 2
 
 # Set Variables
 total_votes = 0
 
-
-
-
-
-
-
-with open(election_data_csv) as csvfile:
-#   CSV reader specifies delimiter   
-    csvreader = csv.reader(csvfile, delimiter=',')
-    print(csvreader)
-
-
-#   Read the header row first
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
+with open(ELECTION_DATA_PATH) as csvfile:
+    # CSV reader specifies delimiter   
+    csvreader = csv.reader(csvfile)
+    # Skip header row
     csv_header = next(csvreader)
-    #print(f"CSV Header: {csv_header}")
 
-#------PRINT CSV ROWS---------------------------------------------------
-#   Read each row of data after the header      
-    #for row in csvreader:
-        #print(row)
-#-----------------------------------------------------------------------
-#      
-# 1 ------TOTAL VOTES CAST----------------------------------------------
-    # Count begins at zero and needs to increase by 1 as it counts the rows   
-   
     for row in csvreader:
+        # Inputs
+
+        # Calculate total votes
         total_votes += 1
+        # List of candidates who received votes
+
+        # Percent each candidate won
+
+        # Total votes each candidate won
+
+        # Calculate who received most votes
     
-# 1 --------------------------------------------------------------------
-#
-# 2 ------COMPLETE LIST OF CANDIDATES WHO RECEIVED VOTES----------------
+    output_text = (
+        " \n"
+        "Election Results\n"
+        "-----------------------------------------\n"
+        "Total Votes: " + str(total_votes) + "\n"
+        "-----------------------------------------\n"
+        "  :   \n"
+        "  :   \n"
+        "  :   \n"
+        "-----------------------------------------\n"  
+        "Winner:   \n"
+        "-----------------------------------------\n"
+    )
 
+    with open('TEMPOUT', 'w') as out_file:
+        out_file.write(output_text) 
 
-# 2 --------------------------------------------------------------------
-#
-# 3 ------PERCENTAGE OF VOTES EACH CANDIDATE WON------------------------
-
-
-
-# 3 --------------------------------------------------------------------
-#
-# 4 ------TOTAL NUMBER OF VOTES EACH CANDIDATE WON----------------------
-
-
-
-# 4 --------------------------------------------------------------------
-#
-# 5 ------THE WINNER OF THE ELECTION BASED ON POPULAR VOTE--------------
-
-
-
-# 5 --------------------------------------------------------------------
-
-# 6 ------PRINT ALL------------------------------------------------------------------
-   
-    print(" ")
-    print(f"Election Results")
-    print(f"-----------------------------------------")
-    print(f"Total Votes: {total_votes}")
-    print(f"-----------------------------------------")
-    print(f"  :   ")
-    print(f"  :   ")
-    print(f"  :   ")   
-    print(f"-----------------------------------------")     
-    print(f"Winner:   ")
-    print(f"-----------------------------------------")  
-
-
-# 6 ---------------------------------------------------------------------------------
+print(output_text)
