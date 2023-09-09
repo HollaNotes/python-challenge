@@ -10,8 +10,8 @@ print(f'budget_data_csv: {budget_data_csv}')
 
 # Define funtions
 
-
 # Set Variables
+#budget_data_dict = {}
 dates = []
 profit_loss = []
 total_months = 0
@@ -23,8 +23,9 @@ with open(budget_data_csv) as csvfile:
 #   CSV reader specifies delimiter     
     csvreader = csv.reader(csvfile, delimiter=',')
     print(csvreader)
-
-#   Read the header row first
+    #budget_data_dict = {rows[0]:rows[1] for rows in csvreader}
+    
+    #   Read the header row first
     csv_header = next(csvreader)
     #print(f"CSV Header: {csv_header}")
     
@@ -66,13 +67,13 @@ with open(budget_data_csv) as csvfile:
 # 5 ---------------------------------------------------------------------------------
 
 # 6 ------PRINT ALL------------------------------------------------------------------
-    print(" ")
-    print(f"Financial Analysis")
-    print(f"-----------------------------------------")
-    print(f"Total Months: {total_months}")
-    print(f"Total:   ")
-    print(f"Average Change:   ")
-    print(f"Greatest Increase in Profits:   ")
-    print(f"Greatest Decrease in Profits:   ")
+print(" ")
+print(f"Financial Analysis")
+print(f"-----------------------------------------")
+print(f"Total Months: {total_months}")
+print(f"Total: $  ")
+print(f"Average Change: $  ")
+print(f"Greatest Increase in Profits:   ")
+print(f"Greatest Decrease in Profits:   ")
 
 # 6 ---------------------------------------------------------------------------------

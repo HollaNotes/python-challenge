@@ -15,10 +15,15 @@ total_votes = 0
 
 
 
+
+
+
+
 with open(election_data_csv) as csvfile:
 #   CSV reader specifies delimiter   
     csvreader = csv.reader(csvfile, delimiter=',')
     print(csvreader)
+
 
 #   Read the header row first
     csv_header = next(csvreader)
