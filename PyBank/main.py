@@ -13,11 +13,15 @@ prev_profit = None
 total_change = 0
 
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
+with open(BUDGET_DATA_PATH, 'r') as csvfile:
+    csvreader = csv.reader(csvfile)
+    budget_data_dict = {}
+    for rows in csvreader:
+        budget_data_dict = {rows[0]:rows[1] for rows in csvreader}
 with open(BUDGET_DATA_PATH) as csvfile:
     csvreader = csv.reader(csvfile)
     # Skip header row 
     csv_header = next(csvreader)
-      
     for row in csvreader:
         # Inputs
         current_date = row[0]
@@ -32,8 +36,9 @@ with open(BUDGET_DATA_PATH) as csvfile:
             total_change += current_change 
         prev_profit = current_profit     # prepare for next row
         # Calculate largest increase
-        
-        # Calculate largest decrease 
+
+        # Calculate largest decrease
+
 
 average_change = round(total_change/(total_months-1) ,2)
 
@@ -44,11 +49,12 @@ output_text = (
     "Total Months: " + str(total_months) + "\n"
     "Total: $" + str(total_profit) + "\n"
     "Average Change: $" + str(average_change) + "\n" 
-    "Greatest Increase in Profits:   \n"
-    "Greatest Decrease in Profits:   \n"
+    "Greatest Increase in Profits: " + str() + "\n"
+    "Greatest Decrease in Profits: " + str() + "\n"
 )
 
 with open('TEMPOUT', 'w') as out_file:
     out_file.write(output_text) 
 
 print(output_text)    
+print(budget_data_dict)

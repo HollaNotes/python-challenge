@@ -10,8 +10,13 @@ CANDIDATE_INDEX = 2
 total_votes = 0
 
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
+with open(ELECTION_DATA_PATH, 'r') as csvfile:
+    csvreader = csv.reader(csvfile)
+    election_data_dict = {}
+    for rows in csvreader:
+        election_data_dict = {rows[0]:rows[2] for rows in csvreader}
+
 with open(ELECTION_DATA_PATH) as csvfile:
-    # CSV reader specifies delimiter   
     csvreader = csv.reader(csvfile)
     # Skip header row
     csv_header = next(csvreader)
@@ -47,3 +52,4 @@ with open(ELECTION_DATA_PATH) as csvfile:
         out_file.write(output_text) 
 
 print(output_text)
+print(election_data_dict)
