@@ -47,9 +47,9 @@ with open(ELECTION_DATA_PATH) as csvfile:
     candidate1_votes = candidate_votes.get(candidate_options[0])
     candidate2_votes = candidate_votes.get(candidate_options[1])
     candidate3_votes = candidate_votes.get(candidate_options[2])
-    candidate1_percentage = round((candidate1_votes/total_votes),5)
-    candidate2_percentage = round((candidate2_votes/total_votes),5)
-    candidate3_percentage = round((candidate3_votes/total_votes),5)
+    candidate1_percentage = candidate1_votes/total_votes
+    candidate2_percentage = candidate2_votes/total_votes
+    candidate3_percentage = candidate3_votes/total_votes
     
     # Text to print
     output_text = (
@@ -58,9 +58,9 @@ with open(ELECTION_DATA_PATH) as csvfile:
         f"-----------------------------------------\n"
         f"Total Votes: {total_votes} \n"
         f"-----------------------------------------\n"
-        f"{candidate_options[0]}  : {round((candidate1_percentage * 100),5)}% ({candidate1_votes})  \n" 
-        f"{candidate_options[1]}  : {round((candidate2_percentage * 100),5)}% ({candidate2_votes})  \n" 
-        f"{candidate_options[2]}  : {round((candidate3_percentage * 100),5)}% ({candidate3_votes})  \n" 
+        f"{candidate_options[0]}  : {round((candidate1_percentage * 100),3)}% ({candidate1_votes})  \n" 
+        f"{candidate_options[1]}  : {round((candidate2_percentage * 100),3)}% ({candidate2_votes})  \n" 
+        f"{candidate_options[2]}  : {round((candidate3_percentage * 100),3)}% ({candidate3_votes})  \n" 
         f"-----------------------------------------\n"  
         f"Winner: {winning_candidate}  \n"
         f"-----------------------------------------\n"
