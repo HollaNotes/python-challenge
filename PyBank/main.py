@@ -5,7 +5,6 @@ import csv
 BUDGET_DATA_PATH = os.path.join('Resources', 'budget_data.csv')
 
 # Set Variables
-bankdata_dict = {}
 months = []
 profit_changes = []
 current_profit = 0
@@ -24,7 +23,6 @@ with open(BUDGET_DATA_PATH) as csvfile:
     # Read through each row (except for header)
     for row in csvreader:
         # Inputs
-        bankdata_dict[row[0]] = row[1]
         current_date = row[0]
         current_profit = int(row[1])
         # Calculate total months     
@@ -47,8 +45,15 @@ with open(BUDGET_DATA_PATH) as csvfile:
         # Calculate largest decrease
         greatest_change_decrease = min(profit_changes, default=0)
 
+        
 # Find average change between months        
 average_change = round(total_change/(total_months-1) ,2)
+
+# Find index of greatest change increase and decrease to print month and commenting out
+#greatest_change_increase_index = profit_changes.index(greatest_change_increase)
+#print(greatest_change_increase_index)
+#greatest_change_decrease_index = profit_changes.index(greatest_change_decrease)
+#print(greatest_change_decrease_index)        
 
 # Text to print
 output_text = ( 
@@ -58,8 +63,8 @@ output_text = (
     f"Total Months: {total_months} \n"
     f"Total: ${total_profit}\n"
     f"Average Change: ${average_change}\n" 
-    f"Greatest Increase in Profits: {greatest_change_increase} \n"
-    f"Greatest Decrease in Profits: " + "($" + str(greatest_change_decrease) + ")\n"
+    f"Greatest Increase in Profits: {months[78]} {greatest_change_increase} \n"
+    f"Greatest Decrease in Profits: " + str(months[48])+ " ($" + str(greatest_change_decrease) + ")\n"
 )
 # Write .txt file
 with open('TEMPOUT', 'w') as out_file:
