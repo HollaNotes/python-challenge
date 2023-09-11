@@ -51,7 +51,7 @@ with open(ELECTION_DATA_PATH) as csvfile:
     candidate1_percentage = round((candidate1_votes/total_votes),5)
     candidate2_percentage = round((candidate2_votes/total_votes),5)
     candidate3_percentage = round((candidate3_votes/total_votes),5)
-
+    
     # Text to print
     output_text = (
         f" \n"
