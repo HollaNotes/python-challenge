@@ -1,11 +1,13 @@
+# Dependencies
 import os
 import csv
-from collections import Counter
 
+# Set constants
 ELECTION_DATA_PATH = os.path.join('Resources', 'election_data.csv')
-BALLOT_ID_INDEX = 0
-COUNTY_INDEX = 1
-CANDIDATE_INDEX = 2
+######## REMOVE???
+#BALLOT_ID_INDEX = 0
+#COUNTY_INDEX = 1
+#CANDIDATE_INDEX = 2
 
 # Set Variables
 candidate_options = []
@@ -14,14 +16,15 @@ total_votes = 0
 winning_candidate = ""
 winning_count = 0
 
+# Change directory to current python directory
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
+# Open and read CVS
 with open(ELECTION_DATA_PATH) as csvfile:
+    # Create dict
     csvreader = csv.DictReader(csvfile)
+    # Read through each row
     for row in csvreader:
-
-
         # Inputs
-
         # Calculate total votes
         total_votes += 1
         # List of candidates who received votes
@@ -29,17 +32,23 @@ with open(ELECTION_DATA_PATH) as csvfile:
         if candidate_name not in candidate_options:
             candidate_options.append(candidate_name)
             candidate_votes[candidate_name] = 0
-        # Percent each candidate won
+        # Add votes to each candidate at it loops though
         candidate_votes[candidate_name] += 1
-        # Total votes each candidate won
+        # Read through vote counts to find winner
         for candidate in candidate_votes:
+            # Get vote count and percentage
             votes = candidate_votes.get(candidate)
-            vote_percentage = float(votes) / float(total_votes) * 100
-        # Calculate who received most votes
+            vote_percentage = (votes / (total_votes)) * 100
+
+        # Determine who received most votes
             if (votes > winning_count):
                 winning_count = votes
                 winning_candidate = candidate
 
+                
+#         candidate1 = candidate_votes[]
+#         candidate2 = candidate_votes[]
+#         candidate3 = candidate_votes[]
 
     output_text = (
         f" \n"
@@ -47,11 +56,11 @@ with open(ELECTION_DATA_PATH) as csvfile:
         f"-----------------------------------------\n"
         f"Total Votes: {total_votes} \n"
         f"-----------------------------------------\n"
-        f"  :   \n" 
-        f"  :   \n"
-        f"  :   \n"
+        #f"{candidate_options[0]}  : {(candidate1/total_votes)*100}% ({candidate1})  \n" 
+        #f"{candidate_options[1]}  : {(candidate1/total_votes)*100}% ({candidate1})  \n" 
+        #f"{candidate_options[2]}  : {(candidate1/total_votes)*100}% ({candidate1})  \n" 
         f"-----------------------------------------\n"  
-        f"Winner:   \n"
+        f"Winner: {winning_candidate}  \n"
         f"-----------------------------------------\n"
     )
 
@@ -59,7 +68,19 @@ with open(ELECTION_DATA_PATH) as csvfile:
         out_file.write(output_text) 
 
 print(output_text)
-print(candidate_options)
+
+#####################################
+# print(candidate_votes)
+
+# print(list(candidate_votes.keys()))
+# print(list(candidate_votes.values()))
+
+# print([key for key in candidate_votes.keys()][1])
+# print([value for value in candidate_votes.values()][1])
+# print(candidate_name)
+# print(candidate_options)
+# print(votes)
+
 
 
 
