@@ -64,7 +64,7 @@ output_text = (
     f"Total: ${total_profit}\n"
     f"Average Change: ${average_change}\n" 
     f"Greatest Increase in Profits: {months[78]} {greatest_change_increase} \n"
-    f"Greatest Decrease in Profits: " + str(months[48])+ " ($" + str(greatest_change_decrease) + ")\n"
+    f"Greatest Decrease in Profits: " + str(months[48]) + " ($" + str(greatest_change_decrease) + ")\n"
 )
 # Write .txt file
 with open('TEMPOUT', 'w') as out_file:
