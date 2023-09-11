@@ -7,6 +7,7 @@ DATE_INDEX = 0
 PROFIT_INDEX = 1
 
 # Set Variables
+bankdata_dict = {}
 months = []
 profit_changes = []
 current_profit = 0
@@ -25,6 +26,7 @@ with open(BUDGET_DATA_PATH) as csvfile:
     # Read through each row (except for header)
     for row in csvreader:
         # Inputs
+        bankdata_dict[row[0]] = row[1]
         current_date = row[0]
         current_profit = int(row[1])
         # Calculate total months     
@@ -42,6 +44,7 @@ with open(BUDGET_DATA_PATH) as csvfile:
         # Prepare for next row
         prev_profit = current_profit
         # Calculate largest increase
+       
         greatest_change_increase = max(profit_changes, default=0)
 
        
