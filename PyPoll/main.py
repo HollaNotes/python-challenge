@@ -11,7 +11,7 @@ CANDIDATE_INDEX = 2
 candidate = []
 candidate_votes = []
 total_votes = 0
-prev_candidate = None
+
 
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 with open(ELECTION_DATA_PATH, 'r') as csvfile:
@@ -26,8 +26,8 @@ with open(ELECTION_DATA_PATH) as csvfile:
     csv_header = next(csvreader)
 
     for row in csvreader:
-        candidate.append(row[2])
-        sorted_candidates = sorted(candidate)
+        #candidate.append(row[2])
+        #sorted_candidates = sorted(candidate)
         # Inputs
         current_id = row[0]
         current_county = row[1]
