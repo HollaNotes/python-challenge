@@ -51,14 +51,14 @@ with open(BUDGET_DATA_PATH) as csvfile:
 average_change = round(total_change/(total_months-1) ,2)
 
 output_text = ( 
-    " \n"
-    "Financial Analysis\n"
-    "-----------------------------------------\n"
-    "Total Months: " + str(total_months) + "\n"
-    "Total: $" + str(total_profit) + "\n"
-    "Average Change: $" + str(average_change) + "\n" 
-    "Greatest Increase in Profits: " + "($" + str(greatest_change_increase) + ")\n"
-    "Greatest Decrease in Profits: " + "($" + str(greatest_change_decrease) + ")\n"
+    f" \n"
+    f"Financial Analysis\n"
+    f"-----------------------------------------\n"
+    f"Total Months: {total_months} \n"
+    f"Total: ${total_profit}\n"
+    f"Average Change: ${average_change}\n" 
+    f"Greatest Increase in Profits: {greatest_change_increase} \n"
+    f"Greatest Decrease in Profits: " + "($" + str(greatest_change_decrease) + ")\n"
 )
 
 with open('TEMPOUT', 'w') as out_file:
