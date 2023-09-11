@@ -15,12 +15,14 @@ total_profit = 0
 prev_profit = None
 total_change = 0
 
-
+# Change directory to current python directory
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
+# Open and read CSV
 with open(BUDGET_DATA_PATH) as csvfile:
     csvreader = csv.reader(csvfile)
     # Skip header row 
     csv_header = next(csvreader)
+    # Read through each row (except for header)
     for row in csvreader:
         # Inputs
         current_date = row[0]
@@ -33,11 +35,12 @@ with open(BUDGET_DATA_PATH) as csvfile:
         if prev_profit is not None:         
             current_change = current_profit - prev_profit  
             total_change += current_change 
+            # Add profit changes to a list
             profit_changes.append(current_change)
+            # Add list of the months to a list
             months.append(row[0])
-
-
-        prev_profit = current_profit     # prepare for next row
+        # Prepare for next row
+        prev_profit = current_profit
         # Calculate largest increase
         greatest_change_increase = max(profit_changes, default=0)
 
