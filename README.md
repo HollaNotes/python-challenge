@@ -47,11 +47,13 @@
 Both Scripts:
 -	https://www.w3schools.com/python/default.asp : 
 o	I used this resource quite a bit when I needed clarification on different things Python can do and examples
+
 -	Tutor: Kourt Bailey
 o	(PyBank and PyPoll) Helped with formatting
 o	(PyBank and PyPoll) Taught me uppercase path for constant and how to link file so it shows correctly in terminal. 
 o	Lines 13 and 33) Taught me about “if not none” and None
 o	PyBank line 59, PyPoll line 55 - Showed be better way to output information
+
 -	https://www.w3schools.com/python/default.asp : I used this resource quite a bit when I needed clarification on different things Python can do and examples
 
 
@@ -67,4 +69,5 @@ PyPoll:
 -	Ask BCS:
 o	Ask-276607:
 	Rounding issue (line 63 in the print area). Helped me format the way I was rounding
+
 -	Line 33 of code: https://realpython.com/python-in-operator/ : information on how to use “in” and “not in” operators to check if a given value is or is not in your collection of values
