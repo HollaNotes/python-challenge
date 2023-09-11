@@ -26,8 +26,6 @@ with open(ELECTION_DATA_PATH) as csvfile:
     csv_header = next(csvreader)
 
     for row in csvreader:
-        #candidate.append(row[2])
-        #sorted_candidates = sorted(candidate)
         # Inputs
         current_id = row[0]
         current_county = row[1]
