@@ -4,10 +4,6 @@ import csv
 
 # Set constants
 ELECTION_DATA_PATH = os.path.join('Resources', 'election_data.csv')
-######## REMOVE???
-#BALLOT_ID_INDEX = 0
-#COUNTY_INDEX = 1
-#CANDIDATE_INDEX = 2
 
 # Set Variables
 candidate_options = []
@@ -29,6 +25,7 @@ with open(ELECTION_DATA_PATH) as csvfile:
         total_votes += 1
         # List of candidates who received votes
         candidate_name = row["Candidate"]
+        # Separate unique candidates
         if candidate_name not in candidate_options:
             candidate_options.append(candidate_name)
             candidate_votes[candidate_name] = 0
@@ -41,11 +38,13 @@ with open(ELECTION_DATA_PATH) as csvfile:
             vote_percentage = (votes / (total_votes)) * 100
 
         # Determine who received most votes
-            if (votes > winning_count):
-                winning_count = votes
-                winning_candidate = candidate
+        winning_candidate = max(zip(candidate_votes.values(), candidate_votes.keys()))[1]    
 
-                
+    # Check to see how many candidates and values for next portion, then comment them out
+        # print(list(candidate_votes.keys()))
+        # print(list(candidate_votes.values()))
+        
+    # Determined there are 3 candidates, so getting votes and percentage for each                 
     candidate1_votes = candidate_votes.get(candidate_options[0])
     candidate2_votes = candidate_votes.get(candidate_options[1])
     candidate3_votes = candidate_votes.get(candidate_options[2])
@@ -53,6 +52,7 @@ with open(ELECTION_DATA_PATH) as csvfile:
     candidate2_percentage = round((candidate2_votes/total_votes),5)
     candidate3_percentage = round((candidate3_votes/total_votes),5)
 
+    # Text to print
     output_text = (
         f" \n"
         f"Election Results\n"
@@ -66,23 +66,12 @@ with open(ELECTION_DATA_PATH) as csvfile:
         f"Winner: {winning_candidate}  \n"
         f"-----------------------------------------\n"
     )
-
+    # Write .txt file
     with open('TEMPOUT', 'w') as out_file:
         out_file.write(output_text) 
 
 print(output_text)
 
-#####################################
-# print(candidate_votes)
-
-# print(list(candidate_votes.keys()))
-# print(list(candidate_votes.values()))
-
-# print([key for key in candidate_votes.keys()][1])
-# print([value for value in candidate_votes.values()][1])
-# print(candidate_name)
-# print(candidate_options)
-# print(votes)
 
 
 
