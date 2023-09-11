@@ -46,9 +46,12 @@ with open(ELECTION_DATA_PATH) as csvfile:
                 winning_candidate = candidate
 
                 
-#         candidate1 = candidate_votes[]
-#         candidate2 = candidate_votes[]
-#         candidate3 = candidate_votes[]
+    candidate1 = candidate_votes.get(candidate_options[0])
+    candidate2 = candidate_votes.get(candidate_options[1])
+    candidate3 = candidate_votes.get(candidate_options[2])
+    candidate1_percentage = round((candidate1/total_votes),5)
+    candidate2_percentage = round((candidate2/total_votes),5)
+    candidate3_percentage = round((candidate3/total_votes),5)
 
     output_text = (
         f" \n"
@@ -56,9 +59,9 @@ with open(ELECTION_DATA_PATH) as csvfile:
         f"-----------------------------------------\n"
         f"Total Votes: {total_votes} \n"
         f"-----------------------------------------\n"
-        #f"{candidate_options[0]}  : {(candidate1/total_votes)*100}% ({candidate1})  \n" 
-        #f"{candidate_options[1]}  : {(candidate1/total_votes)*100}% ({candidate1})  \n" 
-        #f"{candidate_options[2]}  : {(candidate1/total_votes)*100}% ({candidate1})  \n" 
+        f"{candidate_options[0]}  : {(candidate1_percentage)*100}% ({candidate1})  \n" 
+        f"{candidate_options[1]}  : {(candidate2_percentage)*100}% ({candidate2})  \n" 
+        f"{candidate_options[2]}  : {(candidate3_percentage)*100}% ({candidate3})  \n" 
         f"-----------------------------------------\n"  
         f"Winner: {winning_candidate}  \n"
         f"-----------------------------------------\n"
@@ -70,17 +73,18 @@ with open(ELECTION_DATA_PATH) as csvfile:
 print(output_text)
 
 #####################################
-# print(candidate_votes)
+print(candidate_votes)
 
-# print(list(candidate_votes.keys()))
-# print(list(candidate_votes.values()))
+print(list(candidate_votes.keys()))
+print(list(candidate_votes.values()))
 
-# print([key for key in candidate_votes.keys()][1])
-# print([value for value in candidate_votes.values()][1])
-# print(candidate_name)
-# print(candidate_options)
-# print(votes)
-
-
+print([key for key in candidate_votes.keys()][1])
+print([value for value in candidate_votes.values()][1])
+print(candidate_name)
+print(candidate_options)
+print(votes)
 
 
+
+
+print(candidate1)

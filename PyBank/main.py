@@ -50,6 +50,7 @@ with open(BUDGET_DATA_PATH) as csvfile:
         
 average_change = round(total_change/(total_months-1) ,2)
 
+
 output_text = ( 
     f" \n"
     f"Financial Analysis\n"
@@ -66,12 +67,13 @@ with open('TEMPOUT', 'w') as out_file:
 
 print(output_text)  
 
-print(profit_changes)
-print(months)
-print(str(greatest_change_increase))
-print(str(greatest_change_decrease))
-#print(greatest_month_increase)
-#print(greatest_month_decrease)
-print(profit_changes.index(greatest_change_increase))
+# print(profit_changes)
+# print(months)
+# print(str(greatest_change_increase))
+# print(str(greatest_change_decrease))
+# #print(greatest_month_increase)
+# #print(greatest_month_decrease)
+# print(profit_changes.index(greatest_change_increase))
+# print(profit_changes.index(greatest_change_decrease))
 
 
